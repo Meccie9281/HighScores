@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Currently editing: {{data.player_name}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+          <label class="col-sm-4">Name:</label>
+          <input class="col-sm" type="text" formControlName="player_name" required/>
+        </div>
+    </div>
+    <button class="btn btn-primary float-right" type="submit" [disabled]="!playerForm.valid"><i class="bi bi-emoji-laughing-fill"></i></button>
+  </form>
+<br>
+  <app-highscores-table [playerId]="data.id"></app-highscores-table>
+
+  <button type="button" class="btn btn-primary float-right" (click)="showAddingForm()"><i class="bi bi-person-plus-fill"></i></button>
+
+  <app-highscore-adding [playerId]="data.id" *ngIf="showForm"></app-highscore-adding>
+</div>

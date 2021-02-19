@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th *ngFor="let obj of tableCols">{{obj}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngIf="(players$ | async) as players">
+    <tr *ngFor="let player of players" [attr.id]="player.id" (click)="openPlayer(player)" class="clickable">
+      <td>{{player.id}}</td>
+      <td>{{player.player_name}}</td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

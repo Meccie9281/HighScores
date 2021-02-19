@@ -1,0 +1,10 @@
+<form [formGroup]="HighscoreForm" (ngSubmit)="onSubmit()">
+  <h3>{{data.game_name}}</h3>
+  <div class="container">
+    <div class="row">
+      <label class="col-sm-3">Score:</label>
+      <input class="col-sm" type="number" formControlName="score"/>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()"><i class="bi bi-cloud-plus-fill"></i></button>
+    </div>
+  </div>
+</form>

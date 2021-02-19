@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th *ngFor="let obj of tableCols">{{obj}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngIf="(highScores$ | async) as players">
+    <tr *ngFor="let player of players" [attr.id]="player.id">
+      <td>{{player.player_name}}</td>
+      <td>{{player.game_name}}</td>
+      <td>{{player.score}}</td>
+
+      <td>
+        <button type="button" class="btn btn-warning" (click)="openEditHighscoreForm(player)"><i
+          class="bi bi-box-arrow-up-right"></i></button>
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+
