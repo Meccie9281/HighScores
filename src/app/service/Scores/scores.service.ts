@@ -43,5 +43,13 @@ export class ScoresService {
         return response.data;
       }));
   }
+
+  public updateHighscore(highScore: Highscore) {
+    return this.http.post('http://127.0.0.1:8000/api/scores/updatewhole/' + highScore.id, { player_name: highScore.player_name, game_name: highScore.game_name, score: highScore.score}).pipe(
+      map((response: any) => {
+        return response.data;
+      }));
+  }
+
 }
 

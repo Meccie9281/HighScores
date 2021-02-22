@@ -4,6 +4,7 @@ import {Player} from "../models/Player";
 import {PlayerServiceService} from "../service/Player/player-service.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import {Highscore} from "../models/Highscore";
+import {ScoresService} from "../service/Scores/scores.service";
 
 @Component({
   selector: 'app-player-update-view',
@@ -20,7 +21,10 @@ export class PlayerUpdateViewComponent {
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Player,
-              private playerService: PlayerServiceService) { }
+              private playerService: PlayerServiceService,
+              private highScoreService: ScoresService) {
+    this.playerForm.disable();
+  }
 
   onSubmit(){
     this.playerService.updatePlayer(this.playerForm.value).subscribe(res => {
@@ -38,5 +42,6 @@ export class PlayerUpdateViewComponent {
     this.playerForm.patchValue({
       player_name: _score.player_name
     })
+    this.highScoreService.updateHighscore(_score).subscribe();
   }
 }
