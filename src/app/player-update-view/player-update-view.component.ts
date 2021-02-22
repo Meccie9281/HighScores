@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {Player} from "../models/Player";
 import {PlayerServiceService} from "../service/Player/player-service.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import {Highscore} from "../models/Highscore";
 
 @Component({
   selector: 'app-player-update-view',
@@ -31,5 +32,11 @@ export class PlayerUpdateViewComponent {
     this.showForm = !this.showForm;
     console.log(this.showForm);
     return this.showForm;
+  }
+
+  updatePlayer(_score: Highscore){
+    this.playerForm.patchValue({
+      player_name: _score.player_name
+    })
   }
 }

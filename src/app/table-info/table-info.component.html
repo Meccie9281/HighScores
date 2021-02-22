@@ -1,1 +1,32 @@
-<p>table-info works!</p>
+<ng-container *ngIf="!!score && !isEditing">
+  <label>{{score.player_name}}</label>
+  <label>{{score.game_name}}</label>
+  <label>{{score.score}}</label>
+</ng-container>
+
+<ng-container *ngIf="isEditing">
+  <form [formGroup]="highScoreForm">
+    <div class="row">
+      <label class="col-sm-3">Player:</label>
+      <input class="col-sm" formControlName="player_name"/>
+    </div>
+    <div class="row">
+      <label class="col-sm-3">Game:</label>
+      <input class="col-sm" formControlName="game_name"/>
+    </div>
+    <div class="row">
+      <label class="col-sm-3">Score:</label>
+      <input class="col-sm" formControlName="score"/>
+    </div>
+  </form>
+</ng-container>
+
+<td>
+  <ng-container *ngIf="!isEditing">
+    <button type="button" class="btn btn-warning" (click)="editItem(score)"><i
+      class="bi bi-box-arrow-up-right"></i></button>
+  </ng-container>
+
+  <button type="button" class="btn btn-warning" (click)="changeForm()"><i
+    class="bi bi-box-arrow-up-right"></i></button>
+</td>

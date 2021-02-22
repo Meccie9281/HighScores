@@ -5,16 +5,9 @@
   </tr>
   </thead>
   <tbody>
-  <ng-container *ngIf="(highScores$ | async) as players">
-    <tr *ngFor="let player of players" [attr.id]="player.id">
-      <td>{{player.player_name}}</td>
-      <td>{{player.game_name}}</td>
-      <td>{{player.score}}</td>
-
-      <td>
-        <button type="button" class="btn btn-warning" (click)="openEditHighscoreForm(player)"><i
-          class="bi bi-box-arrow-up-right"></i></button>
-      </td>
+  <ng-container *ngIf="(highScores$ | async) as scores">
+    <tr *ngFor="let score of scores" [attr.id]="score.id">
+      <app-table-info [score]="score" (editEvent)="editItem(score)" (UpdateEvent)="updateItem($event)"></app-table-info>
     </tr>
   </ng-container>
   </tbody>

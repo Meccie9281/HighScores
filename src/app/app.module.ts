@@ -15,6 +15,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HighscoresTableComponent } from './highscores-table/highscores-table.component';
 import { HighscoreAddingComponent } from './highscore-adding/highscore-adding.component';
 import { UpdateHighsocreComponent } from './update-highsocre/update-highsocre.component';
+import { TableInfoComponent } from './table-info/table-info.component';
 
 const routes: Routes = [
   { path: '**', component: NavigationComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
     HighscoresTableComponent,
     HighscoreAddingComponent,
     UpdateHighsocreComponent,
+    TableInfoComponent,
   ],
   imports: [
     BrowserModule,

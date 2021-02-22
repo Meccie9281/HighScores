@@ -10,7 +10,7 @@
     <button class="btn btn-primary float-right" type="submit" [disabled]="!playerForm.valid"><i class="bi bi-emoji-laughing-fill"></i></button>
   </form>
 <br>
-  <app-highscores-table [playerId]="data.id"></app-highscores-table>
+  <app-highscores-table [playerId]="data.id" (updateEvent)="updatePlayer($event)"></app-highscores-table>
 
   <button type="button" class="btn btn-primary float-right" (click)="showAddingForm()"><i class="bi bi-person-plus-fill"></i></button>
 

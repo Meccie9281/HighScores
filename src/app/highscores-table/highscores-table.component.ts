@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {EMPTY, Observable} from "rxjs";
 import {Highscore} from "../models/Highscore";
 import {Player} from "../models/Player";
@@ -16,6 +16,7 @@ export class HighscoresTableComponent implements OnInit {
   public tableCols: string[] = ['Player', 'Game', 'score'];
   public highScores$: Observable<Highscore[]> = EMPTY;
   @Input() playerId: number = 0;
+  @Output() updateEvent = new EventEmitter<Highscore>();
 
   constructor(
     private highscoreService: ScoresService,
@@ -31,10 +32,13 @@ export class HighscoresTableComponent implements OnInit {
     this.highScores$ = this.highscoreService.getScoreById(player_Id);
   }
 
-  openEditHighscoreForm(_player: Player){
+  editItem(_score: Highscore){
     this.dialog.open(UpdateHighsocreComponent, {
-      data: _player
+      data: _score
     })
   }
 
+  updateItem(_score: Highscore){
+    this.updateEvent.emit(_score);
+  }
 }
